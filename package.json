@@ -13,7 +13,8 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava",
+		"update": "npx np --no-publish --any-branch"
 	},
 	"files": [
 		"index.js"
@@ -40,6 +41,7 @@
 		"through2": "^3.0.1"
 	},
 	"devDependencies": {
+		"np": "^7.0.0",
 		"ava": "^2.3.0",
 		"gulp": "^4.0.0",
 		"vinyl": "^2.1.0",
