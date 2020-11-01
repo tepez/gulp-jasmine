@@ -6,17 +6,28 @@ const through = require('through2');
 const Jasmine = require('jasmine');
 const Reporter = require('jasmine-terminal-reporter');
 
-function deleteRequireCache(id) {
-	if (!id || id.includes('node_modules')) {
+function deleteRequireCache(id, paths) {
+	if (!id || id.indexOf('node_modules') !== -1) {
 		return;
+	}
+
+	if (!paths) {
+		paths = [ id ];
+	} else {
+		paths.push(id);
+	}
+
+	if (paths.indexOf(id) < paths.length - 1) {
+		const separator = '\n -> ';
+		throw new Error(`gulp-jasmine can't handle cyclic dependencies:${separator}${paths.join(separator)}`)
 	}
 
 	const files = require.cache[id];
 
 	if (files !== undefined) {
-		for (const file of Object.keys(files.children)) {
-			deleteRequireCache(files.children[file].id);
-		}
+		Object.keys(files.children).forEach(function (file) {
+			deleteRequireCache(files.children[file].id, paths.slice());
+		});
 
 		delete require.cache[id];
 	}
