@@ -34,6 +34,8 @@
 		"unit"
 	],
 	"dependencies": {
+		"@types/node": "*",
+		"@types/jasmine": "^3.6.0",
 		"arrify": "^2.0.1",
 		"jasmine": "^3.1.0",
 		"jasmine-terminal-reporter": "^1.0.3",
