@@ -11,21 +11,21 @@ function deleteRequireCache(id, paths) {
 		return;
 	}
 
-	if (!paths) {
-		paths = [ id ];
-	} else {
+	if (paths) {
 		paths.push(id);
+	} else {
+		paths = [id];
 	}
 
 	if (paths.indexOf(id) < paths.length - 1) {
 		const separator = '\n -> ';
-		throw new Error(`gulp-jasmine can't handle cyclic dependencies:${separator}${paths.join(separator)}`)
+		throw new Error(`gulp-jasmine can't handle cyclic dependencies:${separator}${paths.join(separator)}`);
 	}
 
 	const files = require.cache[id];
 
 	if (files !== undefined) {
-		Object.keys(files.children).forEach(function (file) {
+		Object.keys(files.children).forEach(file => {
 			deleteRequireCache(files.children[file].id, paths.slice());
 		});
 

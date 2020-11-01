@@ -1,5 +1,5 @@
 {
-	"name": "gulp-jasmine",
+	"name": "@tepez/gulp-jasmine",
 	"version": "4.0.0",
 	"description": "Run Jasmine tests",
 	"license": "MIT",
