@@ -74,7 +74,7 @@ module.exports = (options = {}) => {
 		jasmine.addSpecFile(resolvedPath);
 
 		callback(null, file);
-	}, function (callback) {
+	}, async function (callback) {
 		const self = this;
 
 		try {
@@ -97,7 +97,7 @@ module.exports = (options = {}) => {
 				}
 			});
 
-			jasmine.execute();
+			await jasmine.execute();
 		} catch (error) {
 			callback(new PluginError('gulp-jasmine', error, {showStack: true}));
 		}
