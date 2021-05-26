@@ -35,18 +35,18 @@
 		"unit"
 	],
 	"dependencies": {
+		"@types/jasmine": "^3.7.4",
 		"@types/node": "*",
-		"@types/jasmine": "^3.6.0",
 		"arrify": "^2.0.1",
-		"jasmine": "^3.1.0",
+		"jasmine": "^3.7.0",
 		"jasmine-terminal-reporter": "^1.0.3",
 		"plugin-error": "^1.0.1",
 		"through2": "^3.0.1"
 	},
 	"devDependencies": {
-		"np": "^7.0.0",
 		"ava": "^2.3.0",
 		"gulp": "^4.0.0",
+		"np": "^7.0.0",
 		"vinyl": "^2.1.0",
 		"xo": "^0.24.0"
 	},
